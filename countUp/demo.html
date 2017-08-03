@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>countUp</title>
+</head>
+<style type="text/css">
+	.count-div{
+		width:500px;
+		height:300px;
+		border:1px solid #999;
+		margin:50px auto;
+	}
+	.count-num-sp{
+		display:block;
+		width:100px;
+		height:30px;
+		line-height: 30px;
+		text-align:center;
+		background:#abcdef;
+		margin:10px auto;
+	}
+	.count-sp{
+		display:block;
+		width:100px;
+		height:30px;
+		line-height: 30px;
+		text-align:center;
+		background:#ccc;
+		margin:10px auto;
+		cursor:pointer;
+	}
+
+</style>
+<body>
+<div class="count-div">
+	<span class="count-num-sp" id="countSp"></span>
+	<span class="count-sp" id="addsum">增加</span>
+	<span class="count-sp" id="subsum">减少</span>
+</div>
+
+<script type="text/javascript" src="dist/countUp.js"></script>
+<script type="text/javascript">
+/**
+** new CountUp("targetElement",'初始数据','目标数据','小数点位数','数据变化的过渡时间','配置项');
+**/
+
+   var option = {
+   	useEasing:true,
+   	useGrouping:true,
+   	decimal:2,
+   	separator:',',
+   	prefix:'$',
+   	suffix:''
+   }
+	var targetVal = 230;
+
+	var demo = new CountUp("countSp",0,targetVal, 0, 0.5,option);
+
+	demo.start();
+
+	var addSum = document.getElementById('addsum');
+	var subSum = document.getElementById('subsum');
+
+	addSum.addEventListener('click',function(){
+		targetVal = 250;
+	 	demo.update(targetVal);
+	},false);
+
+	subSum.addEventListener('click',function(){
+		targetVal = 140;
+	 	demo.update(targetVal);
+	},false);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>haorooms博客，仿百度文库数字滚动效果</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+</head>
+<body>
+<div id="main">
+   <div class="demo">  
+	   <div id="total">
+	   		下载量：<span class="t_num"></span>次
+	   </div>
+	<button class="btn" id="addBtn">增量</button>
+	<button class="btn" id="subBtn">减量</button>
+   </div>
+
+</div>
+
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.js"></script>
+<script type="text/javascript" src="js/animateBackground-plugin.js"></script>
+
+<script type="text/javascript">
+$(function(){
+
+	show_num(12);
+		
+	$("#addBtn").click(function(){
+		show_num(8566);
+	});
+
+	$("#subBtn").click(function(){
+		show_num(450);
+	});
+});
+
+function show_num(n){
+
+	$(".t_num").empty();
+
+	var it = $(".t_num i");
+	var len = String(n).length;
+
+	for(var i=0;i<len;i++){
+		if(it.length<=i){
+			$(".t_num").append("<i></i>");
+		}
+		var num=String(n).charAt(i);
+		var y = -parseInt(num)*30;
+		var obj = $(".t_num i").eq(i);
+		obj.animate({
+			backgroundPosition :'(0 '+String(y)+'px)' 
+			}, 'slow','swing',function(){}
+		);
+	}
+}
+</script>
+</body>
+</html>

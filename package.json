@@ -1,0 +1,22 @@
+{
+  "name": "case",
+  "version": "1.0.0",
+  "description": "case example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feiyayshx/case.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/feiyayshx/case/issues"
+  },
+  "homepage": "https://github.com/feiyayshx/case#readme",
+  "devDependencies": {
+    "mockjs": "^1.0.1-beta3"
+  }
+}
