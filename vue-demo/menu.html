@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>菜单切换</title>
+	<link rel="stylesheet" type="text/css" href="./css/menu.css">
+	<link rel="stylesheet" type="text/css" href="../libs/layui/css/layui.css
+">
+</head>
+<body>
+<div id="app">
+	<section class="section-wrapper">
+		<ul class="layui-nav layui-nav-tree" lay-filter="demo">
+		  <li class="layui-nav-item layui-nav-itemed">
+		    <a href="javascript:;">默认展开</a>
+		    <dl class="layui-nav-child">
+		      <dd><a href="javascript:;">选项一</a></dd>
+		      <dd><a href="javascript:;">选项二</a></dd>
+		      <dd><a href="javascript:;">选项三</a></dd>
+		      <dd><a href="">跳转项</a></dd>
+		    </dl>
+		  </li>
+		  <li class="layui-nav-item">
+		    <a href="javascript:;">解决方案</a>
+		    <dl class="layui-nav-child">
+		      <dd><a href="">移动模块</a></dd>
+		      <dd><a href="">后台模版</a></dd>
+		      <dd><a href="">电商平台</a></dd>
+		    </dl>
+		  </li>
+		  <li class="layui-nav-item"><a href="">云市场</a></li>
+		  <li class="layui-nav-item"><a href="">社区</a></li>
+		</ul>
+		<div class="sec-wrapper">
+			<div class="demo-div1"></div>
+			<div class="demo-div2"></div>
+			<div class="demo-div3"></div>
+		</div>
+		<div class="section-wrapper2">
+			<div class="test-demo active">测试1</div>
+			<div class="test-demo">测试2</div>
+			<div class="test-demo">测试3</div>
+			<div class="test-demo">测试4</div>
+			<div class="test-demo">测试5</div>
+			<div class="test-demo">测试6</div>
+			<div class="test-demo">测试7</div>
+			<div class="test-demo">测试8</div>
+		</div>
+	</section>
+	<div id="demo7"></div> 
+</div>
+<script type="text/javascript" src="../libs/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="../libs/vue/vue.js"></script>
+<script type="text/javascript" src="../libs/layui/layui.js"></script>
+<script type="text/javascript" src="./js/menu.js"></script>
+</body>
+<script type="text/javascript">
+
+function move(){
+	clearInterval(timeId);
+	var str1 = $(".demo-div1").css('display');
+		var str2 = $(".demo-div2").css('display'); 
+		var str3 = $(".demo-div3").css('display');
+		if(str1 == 'block'){
+			$(".demo-div2").css('display','block').siblings().css('display','none');
+		}else if(str2=='block'){
+			$(".demo-div3").css('display','block').siblings().css('display','none');
+
+		}else if(str3=='block'){
+
+			$(".demo-div1").css('display','block').siblings().css('display','none');
+		}
+
+	var timeId = setTimeout(move,2000);
+}
+ move();
+	
+	function animateDemo(){
+		clearInterval(id);
+		var ele = $(".section-wrapper2 .test-demo");
+		var index = 0;
+		for(var i=0;i<ele.length;i++){
+			console.log(ele.eq(i).hasClass('active'));
+			if(ele.eq(i).hasClass('active')){
+				if(i < ele.length-1){
+					index = i;
+					console.log(index);
+				}else{
+					index = -1;
+				}
+				
+			}
+		}
+		$(".section-wrapper2 .test-demo").eq(index+1).addClass('active').siblings().removeClass('active');
+		
+		var id = setTimeout(animateDemo,2000);
+
+	}		
+animateDemo();
+</script>
+</html>
